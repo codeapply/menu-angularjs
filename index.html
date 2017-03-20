@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!-- AngularJS Drop Menu featured on rabidGadfly.com -->
+<!-- http://rabidgadfly.com/2013/01/create-an-easy-angularjs-menu/ -->
+
+<!-- Define this as an AngularJS app -->
+<html ng-app>
+
+<head>
+    <!-- Don't forget to load angularjs! -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.min.js"></script>
+
+    <!-- Our application/controller definitions -->
+    <script src="app.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div ng-controller="MenuController">
+
+    <ul>
+        <!-- Iterate over and display main menu items -->
+        <li class="main btn" ng-repeat="item in items" ng-click="showSubMenu(item,$index)">
+            <a class="btn" ng-href="{{item.href}}">{{item.title}}</a>
+        </li>
+    </ul>
+    <div style="clear:both;"></div>
+
+    <!-- The ng-style directive allows you to assign a style property
+         to an element. Updates to the property will be immediately
+         reflected in the view. See tje showSubMenu function in app.js -->
+    <ul ng-style="subLeft">
+        <!-- Iterate over and display submenu items -->
+        <li class="sub" ng-repeat="sublink in sublinks">
+            <a class="btn fullwidth" ng-href="{{sublink.href}}" target="{{sublink.target}}" >{{sublink.title}}</a>
+        </li>
+    </ul>
+
+    <div style="clear:both;"></div>
+
+</div>
+
+</body>
+
+</html>
